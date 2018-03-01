@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "259036967816",
+    "firebase_url": "https://fir-testingandroid-b8822.firebaseio.com",
+    "project_id": "fir-testingandroid-b8822",
+    "storage_bucket": "fir-testingandroid-b8822.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:259036967816:android:cd9a2f31acfb3222",
+        "android_client_info": {
+          "package_name": "com.bdjobs.training.firebasetest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "259036967816-697qv6i9kj052d3ivch9qmn35n0nm3r1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bdjobs.training.firebasetest",
+            "certificate_hash": "af4efd13bdd3e063ac72abd288dd2a043ed02424"
+          }
+        },
+        {
+          "client_id": "259036967816-l8s2p3tqt74gvr4l0jlnu8h510vs1g5r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBmrafG8FNfNmjzg74HFWW_HatbpIi9fo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "259036967816-l8s2p3tqt74gvr4l0jlnu8h510vs1g5r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
