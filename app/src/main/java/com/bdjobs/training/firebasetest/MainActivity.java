@@ -13,6 +13,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+
 public class MainActivity extends AppCompatActivity {
     EditText username, password;
     TextView usernameTV2, passwordTV2;
@@ -54,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
              @Override
              public void onDataChange(DataSnapshot dataSnapshot) {
                 Users users = new Users();
-                usernameTV2.setText((CharSequence) dataSnapshot.child("users").getValue(Users.class).getUsername());
-                passwordTV2.setText((CharSequence) dataSnapshot.child("users").getValue(Users.class).getPassword());
+//                usernameTV2.setText((CharSequence) dataSnapshot.child("users").getValue(Users.class).getUsername());
+//                passwordTV2.setText((CharSequence) dataSnapshot.child("users").getValue(Users.class).getPassword());
              }
 
              @Override
@@ -101,8 +103,13 @@ public class MainActivity extends AppCompatActivity {
     }
     public void writeNewUser(String userName, String passWord){
 
-        Users users = new Users(userName, passWord);
-        database.child("users").setValue(users);
+       // Users users = new Users(userName, passWord);
+        HashMap<String, String> dataHashMap = new HashMap<String, String>();
+        dataHashMap.put("USERNAME", userName);
+        dataHashMap.put("PASSWORD", passWord);
+
+        database.push().setValue(dataHashMap);
+      //  database.child("users").setValue(users);
        // database.child("Users").child("Password").setValue(passWord);
     }
 }
