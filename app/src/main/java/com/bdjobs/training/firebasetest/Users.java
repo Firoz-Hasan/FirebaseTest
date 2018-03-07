@@ -5,27 +5,32 @@ package com.bdjobs.training.firebasetest;
  */
 
 public class Users {
-    public Users(String username, String password) {
-        this.username = username;
-        this.password = password;
+    public Users(){}
+
+    public Users(String useme, String pasrd) {
+        this.up = useme;
+        this.pp = pasrd;
+
     }
 
-    private String username;
-    private String password;
+    private String up;
+    private String pp;
+
+
 
     public String getUsername() {
-        return username;
+        return up;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsername(String useme) {
+        this.up = useme;
     }
 
     public String getPassword() {
-        return password;
+        return pp;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword(String pasrd) {
+        this.pp = pasrd;
     }
 }

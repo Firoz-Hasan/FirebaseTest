@@ -2,7 +2,6 @@ package com.bdjobs.training.firebasetest;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -51,6 +50,20 @@ public class MainActivity extends AppCompatActivity {
              }
          });
 
+         database.addValueEventListener(new ValueEventListener() {
+             @Override
+             public void onDataChange(DataSnapshot dataSnapshot) {
+                Users users = new Users();
+                usernameTV2.setText((CharSequence) dataSnapshot.child("users").getValue(Users.class).getUsername());
+                passwordTV2.setText((CharSequence) dataSnapshot.child("users").getValue(Users.class).getPassword());
+             }
+
+             @Override
+             public void onCancelled(DatabaseError databaseError) {
+
+             }
+         });
+
 //         userRef.addValueEventListener(new ValueEventListener() {
 //             @Override
 //             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -89,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
     public void writeNewUser(String userName, String passWord){
 
         Users users = new Users(userName, passWord);
-        database.child("Users").child("Username").setValue(users);
+        database.child("users").setValue(users);
        // database.child("Users").child("Password").setValue(passWord);
     }
 }
