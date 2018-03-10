@@ -26,8 +26,6 @@ public class MainActivity extends AppCompatActivity {
     Button save, show;
     DatabaseReference database;
     ListView itemLV;
-    String[] mobileArray = {"Android", "IPhone", "WindowsMobile", "Blackberry",
-            "WebOS", "Ubuntu", "Windows7", "Max OS X", "bla bla bla", "kla kla kla"};
     ArrayList<Users> myList = new ArrayList<Users>();
 
     @Override
@@ -46,8 +44,10 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, myList);
-        itemLV.setAdapter(arrayAdapter);
+//        ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, myList);
+//        itemLV.setAdapter(arrayAdapter);
+
+
 
         database.addChildEventListener(new ChildEventListener() {
             @Override
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 Users users = dataSnapshot.getValue(Users.class);
              //   String value = String.valueOf(dataSnapshot.getValue(Users.class));
                 myList.add(users);
-                Log.d("valval", "onChildAdded: " + users);
+                Log.d("valval", "onChildAdded: " + users.getUsername());
 
 //                passwordTV2.setText((CharSequence) dataSnapshot.child("users").getValue(Users.class).getPassword());
 
@@ -81,7 +81,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
+        ListAdapter listAdapter = new ListAdapter(getApplicationContext(), myList);
+        itemLV.setAdapter(listAdapter);
     }
 
     private void initialize() {
