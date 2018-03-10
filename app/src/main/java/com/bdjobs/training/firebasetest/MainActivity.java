@@ -44,21 +44,17 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-//        ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, myList);
-//        itemLV.setAdapter(arrayAdapter);
 
-
+        final ListAdapter listAdapter = new ListAdapter(getApplicationContext(), myList);
+        itemLV.setAdapter(listAdapter);
 
         database.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Users users = dataSnapshot.getValue(Users.class);
-             //   String value = String.valueOf(dataSnapshot.getValue(Users.class));
+
                 myList.add(users);
-                Log.d("valval", "onChildAdded: " + users.getUsername());
-
-//                passwordTV2.setText((CharSequence) dataSnapshot.child("users").getValue(Users.class).getPassword());
-
+               listAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -81,8 +77,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        ListAdapter listAdapter = new ListAdapter(getApplicationContext(), myList);
-        itemLV.setAdapter(listAdapter);
+
+
     }
 
     private void initialize() {

@@ -30,7 +30,6 @@ public class ListAdapter extends ArrayAdapter {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        //  return super.getView(position, convertView, parent);
         ViewHolder viewHolder = new ViewHolder();
         if (convertView == null) {
             inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
