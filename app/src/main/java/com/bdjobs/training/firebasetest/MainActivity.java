@@ -1,5 +1,6 @@
 package com.bdjobs.training.firebasetest;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -23,7 +24,7 @@ import java.util.HashMap;
 public class MainActivity extends AppCompatActivity {
     EditText username, password;
 
-    Button save, show;
+    Button save, next;
     DatabaseReference database;
     ListView itemLV;
     ArrayList<Users> myList = new ArrayList<Users>();
@@ -33,17 +34,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initialize();
+        onclickListener();
 
         database = FirebaseDatabase.getInstance().getReference();
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String usernameValue = String.valueOf(username.getText());
-                String passwordValue = String.valueOf(password.getText());
-                writeNewUser(usernameValue, passwordValue);
 
-            }
-        });
 
         final ListAdapter listAdapter = new ListAdapter(getApplicationContext(), myList);
         itemLV.setAdapter(listAdapter);
@@ -52,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Users users = dataSnapshot.getValue(Users.class);
-
                 myList.add(users);
                listAdapter.notifyDataSetChanged();
             }
@@ -81,11 +74,31 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void onclickListener() {
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String usernameValue = String.valueOf(username.getText());
+                String passwordValue = String.valueOf(password.getText());
+                writeNewUser(usernameValue, passwordValue);
+
+            }
+        });
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), HashmapAcitivity.class);
+              startActivity(intent);
+            }
+        });
+    }
+
     private void initialize() {
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         save = findViewById(R.id.save);
         itemLV = findViewById(R.id.itemLV);
+        next = findViewById(R.id.next);
 
     }
 
