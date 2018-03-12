@@ -16,7 +16,8 @@ public class HandlerActivity extends AppCompatActivity {
     Runnable runnable;
     Random random;
     DatabaseReference db;
-    int value;
+    int latitude, longitude;
+    LatLong latLong;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +30,7 @@ public class HandlerActivity extends AppCompatActivity {
 
     }
 
-    private void addValueDB(int value) {
+    private void addValueDB(LatLong value) {
         db.push().setValue(value);
     }
 
@@ -44,10 +45,14 @@ public class HandlerActivity extends AppCompatActivity {
         runnable = new Runnable() {
             @Override
             public void run() {
-                value = random.nextInt(500);
-                Log.d("khkz", "run: "+ value);
+                latitude = random.nextInt(500);
+                longitude= random.nextInt(500);
+
+                latLong = new LatLong(latitude,longitude);
+
+                Log.d("khkz", "run: "+ latitude);
                 handler.postDelayed(this, 3000);
-                addValueDB(value);
+                addValueDB(latLong);
             }
         };
         handler.postDelayed(runnable, 3000);//h
