@@ -50,6 +50,6 @@ public class HandlerActivity extends AppCompatActivity {
                 addValueDB(value);
             }
         };
-        handler.postDelayed(runnable, 3000);
+        handler.postDelayed(runnable, 3000);//h
     }
 }
