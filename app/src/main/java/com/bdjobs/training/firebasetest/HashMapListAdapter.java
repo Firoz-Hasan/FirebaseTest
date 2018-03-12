@@ -50,7 +50,9 @@ public class HashMapListAdapter extends ArrayAdapter {
         viewHolder.pass.setText(userLst.get(position).get("Password"));
         return convertView;
     }
+
     class ViewHolder{
         TextView user,pass;
     }
 }
+

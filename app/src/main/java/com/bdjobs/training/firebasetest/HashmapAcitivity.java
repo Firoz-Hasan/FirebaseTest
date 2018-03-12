@@ -1,6 +1,7 @@
 package com.bdjobs.training.firebasetest;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,12 +40,10 @@ public class HashmapAcitivity extends AppCompatActivity {
 
         hashMapListAdapter = new HashMapListAdapter(getApplicationContext(),userList);
         hashmapList.setAdapter(hashMapListAdapter);
-
-
     }
 
     private void retrieveData() {
-        db.addChildEventListener(new ChildEventListener() {
+        /*db.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
@@ -73,7 +72,7 @@ public class HashmapAcitivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        });*/
     }
 
     private void onclicklistener() {
@@ -85,6 +84,13 @@ public class HashmapAcitivity extends AppCompatActivity {
                 writeNewUser(usernameValue, passwordValue);
             }
         });
+        exitBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), HandlerActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void writeNewUser(String usernameValue, String passwordValue) {
@@ -92,8 +98,6 @@ public class HashmapAcitivity extends AppCompatActivity {
         dataHash.put("UserName", usernameValue);
         dataHash.put("Password", passwordValue);
         db.push().setValue(dataHash);
-
-
     }
 
     @SuppressLint("WrongViewCast")

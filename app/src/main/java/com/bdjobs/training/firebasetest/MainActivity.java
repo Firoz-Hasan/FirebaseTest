@@ -36,13 +36,14 @@ public class MainActivity extends AppCompatActivity {
         initialize();
         onclickListener();
 
+
         database = FirebaseDatabase.getInstance().getReference();
 
 
         final ListAdapter listAdapter = new ListAdapter(getApplicationContext(), myList);
         itemLV.setAdapter(listAdapter);
 
-        database.addChildEventListener(new ChildEventListener() {
+       /* database.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Users users = dataSnapshot.getValue(Users.class);
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        });*/
 
 
     }
