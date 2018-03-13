@@ -23,7 +23,7 @@ public class HashmapAcitivity extends AppCompatActivity {
 
     EditText user, pass;
     ListView hashmapList;
-    Button save, exitBTN;
+    Button save, exitBTN, secondNext;
     DatabaseReference db;
     ArrayList<HashMap<String, String>> userList;
     HashMap<String, String> dataHash;
@@ -91,6 +91,13 @@ public class HashmapAcitivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        secondNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), UpdateActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void writeNewUser(String usernameValue, String passwordValue) {
@@ -107,6 +114,7 @@ public class HashmapAcitivity extends AppCompatActivity {
         hashmapList = findViewById(R.id.itemLV);
         save = findViewById(R.id.save);
         exitBTN = findViewById(R.id.exitBTN);
+        secondNext = findViewById(R.id.secondNext);
         db = FirebaseDatabase.getInstance().getReference();
         userList = new ArrayList<HashMap<String, String>>();
         dataHash = new HashMap<String, String>();

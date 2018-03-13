@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".HashmapAcitivity" />
-        <activity android:name=".HandlerActivity"></activity>
+        <activity android:name=".HandlerActivity" />
+        <activity android:name=".UpdateActivity"></activity>
     </application>
 
 </manifest>

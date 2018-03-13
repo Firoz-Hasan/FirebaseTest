@@ -7,6 +7,9 @@ package com.bdjobs.training.firebasetest;
 public class LatLong {
     int longitude, latitude;
 
+    public LatLong() {
+    }
+
     public LatLong(Integer longitude, Integer latitude) {
         this.longitude = longitude;
         this.latitude = latitude;
