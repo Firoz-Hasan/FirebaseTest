@@ -17,13 +17,11 @@ import java.util.Random;
 public class UpdateActivity extends AppCompatActivity {
     TextView lat, lon;
     DatabaseReference db;
-    String value;
     Handler handler;
     Random random;
     Runnable runnable;
     int latitude, longitude;
-    Object lat1;
-    Object lon1;
+    LatLong latLong;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,17 +38,24 @@ public class UpdateActivity extends AppCompatActivity {
         db.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                lat1 =  dataSnapshot.child("Latitude").getValue();
-                lon1 =  dataSnapshot.child("Longitude").getValue();
+//                lat1 = dataSnapshot.child("Latitude").getValue();
+//                lon1 = dataSnapshot.child("Longitude").getValue();
 
-                Log.d("blabla", "onChildAdded: " + lat1 + " --" + lon1);
+
                 // lat.setText(Integer.toString((Integer) dataSnapshot.child("Latitude").getValue()));
                 // lon.setText(Integer.toString((Integer) dataSnapshot.child("Longitude").getValue()));
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+              //  Integer latitudeValue = dataSnapshot.child("Latitude").getValue(Integer.class);
+              //  Integer longitudeValue = dataSnapshot.child("Longitude").getValue(Integer.class);
+                LatLong latLongvalue = dataSnapshot.getValue(LatLong.class);
 
+                Log.d("cla", "onChildAdded: " + latLongvalue.getLatitude()+"--"+latLongvalue.getLongitude() );
+
+                lat.setText(Integer.toString(latLongvalue.getLatitude()));
+                lon.setText(Integer.toString(latLongvalue.getLongitude()));
             }
 
             @Override
@@ -71,8 +76,8 @@ public class UpdateActivity extends AppCompatActivity {
     }
 
     private void writeDB(int latitude, int longitude) {
-        String key = db.child("Latitude").getKey();
-        Log.d("key", "writeDB: " + key);
+//        String key = db.child("Latitude").getKey();
+//        Log.d("key", "writeDB: " + key);
         //  db.child("Latitude").setValue(value);
         db.child("map").child("Latitude").setValue(latitude);
         db.child("map").child("Longitude").setValue(longitude);
@@ -84,17 +89,22 @@ public class UpdateActivity extends AppCompatActivity {
             @Override
             public void run() {
                 latitude = random.nextInt(500);
-                longitude = random.nextInt(500);
+                longitude= random.nextInt(500);
 
-                // latLong = new LatLong(latitude,longitude);
+                latLong = new LatLong(latitude,longitude);
 
-                Log.d("khkz", "run: " + latitude);
+                Log.d("khkz", "run: "+ latitude);
                 handler.postDelayed(this, 3000);
 
-                writeDB(latitude, longitude);
+                addValueDB(latLong);
             }
         };
         handler.postDelayed(runnable, 3000);//h
+    }
+    private void addValueDB(LatLong value) {
+        db.child("maps").setValue(value);
+        //db.child("Latitude").setValue(value.getLatitude());
+        //db.child("Longitude").setValue(value.getLongitude());
     }
 
     private void initialization() {
