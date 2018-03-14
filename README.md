@@ -6,7 +6,7 @@ If we have only 1 data like only username or just firstname or just one field we
 What we can do in that case we can save those fields (more than 1 field) in 2 different ways.
 # 1st way :
 In a model class/pojo class we can declare those fields, then when sending or receiving DATA to firebase instance / objcect of that model class/ pojo class.
-#2nd way :
+# 2nd way :
 Take hashmap and save data in hashmap and send and receive data as hashmap.
 # Objective Two :
 Listview / custom listview and handler post delayed has been implemented.
