@@ -15,6 +15,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.Random;
 
 public class UpdateActivity extends AppCompatActivity {
+    // This 
+
     TextView lat, lon;
     DatabaseReference db;
     Handler handler;
@@ -38,18 +40,10 @@ public class UpdateActivity extends AppCompatActivity {
         db.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-//                lat1 = dataSnapshot.child("Latitude").getValue();
-//                lon1 = dataSnapshot.child("Longitude").getValue();
-
-
-                // lat.setText(Integer.toString((Integer) dataSnapshot.child("Latitude").getValue()));
-                // lon.setText(Integer.toString((Integer) dataSnapshot.child("Longitude").getValue()));
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-              //  Integer latitudeValue = dataSnapshot.child("Latitude").getValue(Integer.class);
-              //  Integer longitudeValue = dataSnapshot.child("Longitude").getValue(Integer.class);
                 LatLong latLongvalue = dataSnapshot.getValue(LatLong.class);
 
                 Log.d("cla", "onChildAdded: " + latLongvalue.getLatitude()+"--"+latLongvalue.getLongitude() );
@@ -75,13 +69,6 @@ public class UpdateActivity extends AppCompatActivity {
         });
     }
 
-    private void writeDB(int latitude, int longitude) {
-//        String key = db.child("Latitude").getKey();
-//        Log.d("key", "writeDB: " + key);
-        //  db.child("Latitude").setValue(value);
-        db.child("map").child("Latitude").setValue(latitude);
-        db.child("map").child("Longitude").setValue(longitude);
-    }
 
     private void handlerPostDelayed() {
 
@@ -102,9 +89,7 @@ public class UpdateActivity extends AppCompatActivity {
         handler.postDelayed(runnable, 3000);//h
     }
     private void addValueDB(LatLong value) {
-        db.child("maps").setValue(value);
-        //db.child("Latitude").setValue(value.getLatitude());
-        //db.child("Longitude").setValue(value.getLongitude());
+        db.child("GPS Coordinates").setValue(value);
     }
 
     private void initialization() {
