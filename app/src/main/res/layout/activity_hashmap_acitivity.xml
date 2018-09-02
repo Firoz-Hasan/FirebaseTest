@@ -26,6 +26,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:text="Save" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="It gonna save user/pass in firebase db"
+        android:gravity="center"
+        android:textColor="#ff0000"
+        />
 
     <FrameLayout
         android:layout_width="match_parent"

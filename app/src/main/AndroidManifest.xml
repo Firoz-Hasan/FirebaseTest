@@ -17,12 +17,15 @@
         <activity android:name=".MainActivity">
             android:label="Main Activity">
         </activity>
-        <activity android:name=".HashmapAcitivity" />
+        <activity android:name=".HashmapAcitivity" >
+
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity android:name=".EmailPasswordActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity android:name=".HandlerActivity" />
         <activity android:name=".UpdateActivity" />
